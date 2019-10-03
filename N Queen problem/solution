@@ -1,0 +1,125 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class QueenPosition{
+    int row,col;
+    QueenPosition(int xCord, int yCord)
+    {
+        row=xCord;
+        col=yCord;
+    }
+}
+
+class GFG {
+    static ArrayList<String> finalAL;
+    static ArrayList<ArrayList<QueenPosition>> finalAL2;
+    
+    static void NQueenUtil(int n, ArrayList<Integer> queenPos,int row)
+    {
+        if(n==row)
+            {
+                String str="[";
+               // System.out.println("* * * * * * * * P R I N T I N G * * * * * * * *");
+                for(int i=0;i<queenPos.size();i++)
+                {
+                    str+=(queenPos.get(i)+1)+" ";
+                }
+                str+="]";
+                finalAL.add(str);
+                
+                //System.out.println("adding to finalAL ");
+                return;
+            }
+        int col;
+        for(col=0;col<n;col++)
+        {
+            boolean foundSafe=true;
+            for(int queen=0;queen<row;queen++)
+            {
+                if(queenPos.get(queen)==col || queenPos.get(queen)+queen==col+row || queenPos.get(queen)-queen==col-row)
+                {
+                    /*if(row==2)
+                    {
+                        if(queenPos.get(queen)==col )
+                        {
+                            
+                            System.out.println("case 1.queenPos.col==col ["+queen+" "+queenPos.get(queen)+" ] and current: "+col);
+                        }
+                        else if(queenPos.get(queen)+queen==col+row)
+                        {
+                            System.out.println("case 2. row+col wala conditoion "+queen+" "+queenPos.get(queen)+" current: "+row+" "+col);
+                        }
+                        else
+                            System.out.println("case 3. row-col wala condition ");
+                    }*/
+                    foundSafe=false;
+                    break;
+                }
+            }
+            
+            if(foundSafe)
+            {
+                queenPos.add(row,col);
+                //System.out.println("worked out for: [ "+row+" "+col+" ]");
+                //System.out.println("*** lookinf for row: "+(row+1));
+                //if(NQueenUtil(n,queenPos,row+1))
+                  //  return true;
+                NQueenUtil(n,queenPos,row+1);
+                if(queenPos.size()>0)
+                queenPos.remove(queenPos.size()-1);
+            }
+            
+            
+        }
+        /*for(int i=0;i<queenPos.size();i++)
+        {
+            System.out.println("***printing : : "+i+" "+queenPos.get(i)+" ***");
+        }
+        */
+        
+        
+        //System.out.println("opps not found");
+       // return false;
+       /* if(queenPos.size()>0)
+                queenPos.remove(queenPos.size()-1);*/
+        //return;
+        
+    }
+    
+    static void NQueen(int n)
+    {
+        finalAL=new ArrayList<String>();
+        ArrayList<QueenPosition> queenPos2=new ArrayList<QueenPosition>();
+        ArrayList<Integer> queenPos=new ArrayList<Integer>();
+        String res="";
+        NQueenUtil(n,queenPos,0);
+        if(finalAL.size()>0)
+         {
+           
+            for(int ways=0;ways<finalAL.size();ways++)
+            {
+                res+=finalAL.get(ways)+" ";
+               
+            }
+            
+            System.out.println(res);
+        }
+        else
+        {
+            System.out.println("-1");
+        }
+        //display();
+    }
+    
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int tc=sc.nextInt();
+		while(tc-->0)
+		{
+		    int boardSize=sc.nextInt();
+		    NQueen(boardSize);
+		}
+	}
+}
