@@ -1,0 +1,26 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://www.codechef.com/DEC19B/problems/PLMU
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--){
+        long long int n,i=0,j,a[3]={};
+        cin>>n;
+        while(n--)
+        {
+            cin>>j;
+            if(j==0)
+                a[0]++;
+            else if(j==2)
+                a[2]++;
+        }
+        cout<<a[0]*(a[0]-1)/2+a[2]*(a[2]-1)/2<<"\n";
+    }
+}
