@@ -1,0 +1,26 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/maximum-occurrence-9/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;
+    getline(cin,s);
+    long long int i,j,a[256]={},max=0,index=-1;
+    for(i=0;i<s.size();i++)
+    {
+        a[s[i]]++;
+    }
+    for(i=0;i<=127;i++)
+    {
+        if(a[i]>max)
+        {
+            max=a[i];
+            index=i;
+        }
+    }
+    cout<<char(index)<<" "<<max;
+}
