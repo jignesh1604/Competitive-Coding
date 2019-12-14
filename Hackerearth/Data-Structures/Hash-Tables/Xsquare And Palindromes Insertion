@@ -1,0 +1,29 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/xsquare-and-palindromes-insertion/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        long long int i,j,c=0,a[26]={};
+        cin>>s;
+        for(i=0;i<s.size();i++)
+        {
+            a[s[i]-97]++;
+        }
+        for(i=0;i<26;i++)
+        {
+            if(a[i]%2==1)
+                c++;
+        }
+        cout<<max((long long int)0,c-1)<<"\n";
+    }
+}
