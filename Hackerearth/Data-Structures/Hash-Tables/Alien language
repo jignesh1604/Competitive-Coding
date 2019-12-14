@@ -1,0 +1,35 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/alien-language/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s,d;
+        cin>>s>>d;
+        long long int a[26]={},b[26]={},i,flag=0;
+        for(i=0;i<s.size();i++)
+            a[s[i]-97]++;
+        for(i=0;i<d.size();i++)
+            b[d[i]-97]++;
+            
+        for(i=0;i<26;i++)
+        {
+            if(a[i]>0&&b[i]>0)
+            {
+                flag=1;
+                cout<<"YES\n";
+                break;
+            }
+        }
+        if(flag==0)
+            cout<<"NO\n";
+    }
+}
