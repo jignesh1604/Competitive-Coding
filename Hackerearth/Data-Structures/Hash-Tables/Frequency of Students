@@ -1,0 +1,24 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/frequency-of-students/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,i,j;
+    cin>>n;
+    map<string,int> mp;
+    while(n--)
+    {
+        string s;
+        cin>>s;
+        mp[s]++;
+    }
+    for(auto x:mp)
+    {
+        cout<<x.first<<" "<<x.second<<"\n";
+    }
+}
