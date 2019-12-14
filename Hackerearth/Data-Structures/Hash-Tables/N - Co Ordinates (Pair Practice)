@@ -1,0 +1,21 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/n-co-ordinates-pair-practice/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long int n,i,j,x,y;
+    cin>>n;
+    map<pair<long long int, long long int>,long long int> mp;
+    while(n--)
+    {
+        cin>>x>>y;
+        mp[{x,y}]++;
+    }
+    for(auto xy : mp)
+        cout<<xy.first.first<<" "<<xy.first.second<<" "<<xy.second<<"\n";
+}
