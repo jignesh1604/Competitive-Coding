@@ -1,0 +1,29 @@
+/*
+	Author	:	jignesh1604
+	College	:	SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/bob-and-string-easy/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string s,d;
+	    long long int a[26]={},b[26]={},c=0,i;
+	    cin>>s>>d;
+	    for(i=0;i<s.size();i++)
+	        a[s[i]-97]++;
+	    for(i=0;i<d.size();i++)
+	        b[d[i]-97]++;
+	        
+	    for(i=0;i<26;i++)
+	    {
+	        c+=abs(a[i]-b[i]);
+	    }
+	    cout<<c<<"\n";
+	}
+}
