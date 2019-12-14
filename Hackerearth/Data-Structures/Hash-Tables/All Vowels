@@ -1,0 +1,24 @@
+/*
+  Author  : jignesh1604
+  College : SVNIT
+  Link    : https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/all-vowels-2/
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long int n,i,j;
+    string s;
+    set<char> st;
+    cin>>n>>s;
+    for(i=0;i<s.size();i++)
+    {
+        if(s[i]=='a'||s[i]=='e'||s[i]=='o'||s[i]=='u'||s[i]=='i')
+            st.insert(s[i]);
+    }
+    if(st.size()==5)
+        cout<<"YES\n";
+    else 
+        cout<<"NO\n";
+}
