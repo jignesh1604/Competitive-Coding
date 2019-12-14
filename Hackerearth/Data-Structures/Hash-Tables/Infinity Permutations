@@ -1,0 +1,47 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/thanos-and-the-infinity-stones/description/#c208412
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+int main()
+{
+    FAST;
+    ll n,x,i,pos[200001],ans=1,c=1;
+    cin>>n;
+    FORE(i,1,n)
+    {
+        cin>>x;
+        pos[x]=i;
+    }
+    RORE(i,n-1,1)
+    {
+        if(pos[i+1]>pos[i])
+            c++;
+        else 
+            c=1;
+
+        ans=max(c,ans);
+    }
+    cout<<n-ans<<"\n";
+}
