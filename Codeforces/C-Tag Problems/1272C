@@ -1,0 +1,60 @@
+
+/*
+ * Author   :   jignesh16
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1272/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+int main()
+{
+    FAST;
+    ll n,k,i,j,a[200001]={},ans=0,x=0;
+    cin>>n>>k;
+    string s;
+    char c;
+    cin>>s;
+    for(i=0;i<k;i++)
+    {
+        cin>>c;
+        for(j=0;j<n;j++)
+        {
+            if(s[j]==c)
+                a[j]=1;
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        if(a[i]==0)
+        {
+            ans+=x*(x+1)/2;
+            x=0;
+        }
+        else 
+        {
+            x++;
+        }
+    }
+    if(x!=0)
+        ans+=x*(x+1)/2;
+    cout<<ans;
+}
