@@ -1,0 +1,81 @@
+
+/*
+ * Author   :   jignesh16
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1272/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+int main()
+{
+    FAST;
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        ll u=0,d=0,l=0,r=0,i,j;
+        for(i=0;i<s.size();i++)
+        {
+            if(s[i]=='U')
+                u++;
+            if(s[i]=='D')
+                d++;
+            if(s[i]=='L')
+                l++;
+            if(s[i]=='R')
+                r++;
+        }
+        if(u>d)
+        {
+            u=d;
+        }
+        else 
+            d=u;
+        if(l>r)
+            l=r;
+        else 
+            r=l;
+        if((u==0||d==0)&&l!=0&&r!=0)
+        {
+                cout<<2<<"\n"<<"LR"<<"\n";
+        }
+        else if((l==0||r==0)&&u!=0&&d!=0)
+        {
+                cout<<2<<"\n"<<"UD"<<"\n";
+        }
+        else{
+        cout<<u+l+r+d<<"\n";
+        for(i=0;i<u;i++)
+            cout<<'U';
+        for(i=0;i<l;i++)
+            cout<<'L';
+        for(i=0;i<d;i++)
+            cout<<'D';
+        for(i=0;i<r;i++)
+            cout<<'R';
+ 
+        cout<<"\n";
+        }
+    }
+}
