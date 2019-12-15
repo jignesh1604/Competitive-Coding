@@ -1,0 +1,65 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/16/problem/B
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    FAST;
+    ll n,m,i,j,x,y,ans=0,c=0;
+    vector<pll> v;
+    cin>>n>>m;
+    FOR(i,0,m)
+    {
+        cin>>x>>y;
+        v.pb(make_pair(x,y));
+    }
+    sort(v.begin(),v.end(),sortbysec);
+    FOR(i,0,m)
+    {
+        if(c<n)
+        {
+            if(n-c>=v[i].first)
+            {
+                ans+=v[i].first*v[i].second;
+                c+=v[i].first;
+            }
+            else 
+            {
+                ans+=(n-c)*v[i].second;
+                c+=n-c;
+            }
+        }
+        else 
+            break;
+    }
+    cout<<ans<<"\n";
+}
