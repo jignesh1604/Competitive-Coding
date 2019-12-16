@@ -1,0 +1,66 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1271/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    FAST;
+    ll n,x,y,sx,sy,i,j,a[4]={};
+    cin>>n>>sx>>sy;
+    vector<pair<ll,char>> v;
+    
+    v.pb(make_pair(0,'r'));
+    v.pb(make_pair(0,'l'));
+    v.pb(make_pair(0,'u'));
+    v.pb(make_pair(0,'d'));
+    FOR(i,0,n)
+    {
+        cin>>x>>y;
+        if(x>sx)
+            v[0].first++;
+        if(x<sx)
+            v[1].first++;
+        if(y>sy)
+            v[2].first++;
+        if(y<sy)
+            v[3].first++;
+    }
+    sort(v.begin(),v.end());
+    if(v[3].second=='r')
+        cout<<v[3].first<<"\n"<<sx+1<<" "<<sy<<"\n";
+    else if(v[3].second=='l')
+        cout<<v[3].first<<"\n"<<sx-1<<" "<<sy<<"\n";
+    else if(v[3].second=='u')
+        cout<<v[3].first<<"\n"<<sx<<" "<<sy+1<<"\n";
+    else if(v[3].second=='d')
+        cout<<v[3].first<<"\n"<<sx<<" "<<sy-1<<"\n";
+}
