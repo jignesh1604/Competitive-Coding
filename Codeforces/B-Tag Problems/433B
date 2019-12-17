@@ -1,0 +1,77 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/433/problem/B
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    FAST;
+    ll n,m,i,a[100001],l,r,type;
+    cin>>n;
+    ll pre1[n+1],pre2[n+1];
+    FOR(i,0,n)
+        cin>>a[i];
+
+    FOR(i,0,n)
+    {
+        if(i==0)
+            pre1[i]=a[i];
+        else 
+            pre1[i]=pre1[i-1]+a[i];
+    }
+    sort(a, a+n);
+    FOR(i,0,n)
+    {
+        if(i==0)
+            pre2[i]=a[i];
+        else 
+            pre2[i]=pre2[i-1]+a[i];
+    }
+    cin>>m;
+    while(--m>=0)
+    {
+        cin>>type>>l>>r;
+        if(type==1)
+        {
+            if(l==1)
+                cout<<pre1[r-1]<<"\n";
+            else 
+                cout<<pre1[r-1]-pre1[l-2]<<"\n";
+        }
+        else
+        {
+            if(l==1)
+                cout<<pre2[r-1]<<"\n";
+            else 
+                cout<<pre2[r-1]-pre2[l-2]<<"\n";
+        }
+    }
+}
