@@ -1,0 +1,80 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/monk-and-the-islands/
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(--t>=0)
+    {
+        ll n,m,i,j,x,y,c=0;
+        cin>>n>>m;
+        vector<ll> graph[n+1];
+        ll visited[n+1]={},level[n+1];
+        FOR(i,0,m)
+        {
+            cin>>x>>y;
+            graph[x].pb(y);
+            graph[y].pb(x);
+
+        }
+        queue<ll> res,q;
+        q.push(1);
+        visited[1]=1;
+        level[1]=0;
+        while(!q.empty())
+        {
+            if(q.back()==n)
+                break;
+            j=q.front();
+            q.pop();
+            res.push(j);
+            FOR(i,0,graph[j].sz){
+                if(visited[graph[j][i]]==0){
+                    q.push(graph[j][i]);
+                    visited[graph[j][i]]=1;
+                    level[graph[j][i]]=level[j]+1;
+                }
+
+
+            }
+
+            c++;
+
+
+        }
+        cout<<level[n]<<"\n";
+    }
+}
