@@ -1,0 +1,69 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1266/problem/A
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    FAST;
+    ll n,j;
+    cin>>n;
+    string s;
+    FOR(j,0,n)
+    {
+        ll i,sum=0,flag=0,f=0,a[5]={};
+    cin>>s;
+    FOR(i,0,s.sz)
+    {
+        sum+=(s[i]-'0');
+        if((s[i]-'0')%2==0){
+            a[(s[i]-'0')/2]++;
+            flag=1;
+        }
+        if(s[i]=='0')
+            f=1;
+    }
+    if(sum%3==0&&flag==1&&f==1)
+    {
+        if(a[1]==0&&a[2]==0&&a[3]==0&&a[4]==0)
+        {
+            if(a[0]>1)
+                cout<<"red\n";
+            else 
+                cout<<"cyan\n";
+        }
+        else 
+            cout<<"red\n";
+    }
+    else 
+        cout<<"cyan\n";
+    }
+}
