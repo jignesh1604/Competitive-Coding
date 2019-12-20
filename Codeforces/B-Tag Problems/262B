@@ -1,0 +1,68 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/262/problem/B
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+bool sortbysec(const pair<double,ll> &a,const pair<double,ll> &b)
+{
+    return true;
+}
+
+int main()
+{
+    FAST;
+    ll n,k;
+    cin>>n>>k;
+    ll a[n+1],i,sum=0,neg=0;
+    FOR(i,0,n){
+        cin>>a[i];
+        if(a[i]<=0)
+            neg++;
+    }
+    if(k<=neg)
+    {
+        FOR(i,0,k)
+            sum+=abs(a[i]);
+
+        FOR(i,k,n)
+            sum+=a[i];
+    }
+    else 
+    {
+        k=k-neg;
+        FOR(i,0,n)
+        {
+            a[i]=abs(a[i]);
+        }
+        sort(a, a+n);
+        if(k%2!=0)
+            sum-=a[0];
+        else 
+            sum+=a[0];
+
+        FOR(i,1,n)
+            sum+=a[i];
+    }
+    cout<<sum<<"\n";
+}
