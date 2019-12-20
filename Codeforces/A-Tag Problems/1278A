@@ -1,0 +1,79 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1278/problem/A
+ */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+
+bool sortbysec(const pll &a,const pll &b)
+{
+    if(a.second>b.second)
+        return true;
+    else
+        return false;
+}
+
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string p,s,d,h;
+        cin>>p>>h;
+        if(p.sz>h.sz)
+        {
+            cout<<"NO\n";
+        
+        }
+        else if(p.sz==h.sz)
+        {
+            sort(p.begin(),p.end());
+            sort(h.begin(),h.end());
+            if(p==h)
+                cout<<"YES\n";
+            else 
+                cout<<"NO\n";
+        }
+        else 
+        {
+            int flag=0;
+            sort(p.begin(),p.end());
+            int i;
+            FOR(i,0,h.sz-p.sz+1)
+            {
+                d=h.substr(i,p.sz);
+                // cout<<d<<"\n";
+                sort(d.begin(),d.end());
+                if(p==d)
+                {
+                    flag=1;
+                    cout<<"YES\n";
+                    break;
+                }
+            }
+            if(flag==0)
+                cout<<"NO\n";
+        }
+    }
+}
