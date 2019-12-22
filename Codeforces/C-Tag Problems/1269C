@@ -1,0 +1,89 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1269/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+bool sortbysec(const pair<double,ll> &a,const pair<double,ll> &b)
+{
+    return true;
+}
+ 
+int main()
+{
+    FAST;
+    ll n,k,i,j,x=0;
+    string s,d,ans,sub;
+    cin>>n>>k>>s;
+    d=s.substr(0,k);
+    FOR(i,0,n/k)
+    {
+        ans+=d;
+    }
+    if(n%k!=0)
+    {
+        sub=d.substr(0,(n-k)%k);
+        ans+=sub;
+    }
+    if(ans>=s)
+        cout<<ans.sz<<"\n"<<ans<<"\n";
+    else 
+    {
+        while(ans<s)
+        {
+            ans="";
+            if(d[d.sz-1]=='9')
+            {
+                for(j=d.sz-1;j>=0;j--)
+                {
+                    if(d[j]=='9')
+                        d[j]='0';
+                    else
+                    {
+                        d[j]++;
+                        break;
+                    }
+                    
+                }
+ 
+                
+            }
+            else 
+            {
+                d[d.sz-1]++;
+                // d[d.sz-1]=(char)((int)(d[d.sz-1]-'0')+1);
+            }
+            FOR(i,0,n/k)
+            {
+                ans+=d;
+            }
+            if(n%k!=0)
+            {
+                sub=d.substr(0,(n-k)%k);
+                ans+=sub;
+            }
+            
+        }
+        cout<<ans.sz<<"\n"<<ans<<"\n";
+    }
+}
