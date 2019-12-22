@@ -1,0 +1,126 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/144/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const int M=1e9+7;
+ 
+bool sortbysec(const pair<double,ll> &a,const pair<double,ll> &b)
+{
+    return true;
+}
+ 
+int main()
+{
+    FAST;
+    ll i,j,x,y,n,count=0,xa,xb,ya,yb;
+    ld r,dis;
+    cin>>xa>>ya>>xb>>yb;
+    if(xa>xb)
+    {
+        swap(xa,xb);
+        swap(ya,yb);
+    }
+    if(ya>yb)
+        swap(ya,yb);
+    vector<pair<pair<ll,ll>,ld>> v;
+    cin>>n;
+    // cout<<xa<<" "<<ya<<" "<<xb<<" "<<yb<<"\n";
+    FOR(i,0,n)
+    {
+        cin>>x>>y>>r;
+        v.pb(make_pair(make_pair(x,y),r));
+    }
+        FORE(i,xa,xb)
+        {   
+            int flag=0;
+            FOR(j,0,n)
+            {
+                dis=sqrt((v[j].first.first-i)*(v[j].first.first-i)+(v[j].first.second-ya)*(v[j].first.second-ya));
+
+                // cout<<dis<<"\n";
+                if(dis<=v[j].second)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+            {
+                count++;
+            }
+        }
+        FORE(i,xa,xb)
+        {
+            
+            int flag=0;
+            FOR(j,0,n)
+            {
+                dis=sqrt((v[j].first.first-i)*(v[j].first.first-i)+(v[j].first.second-yb)*(v[j].first.second-yb));
+                if(dis<=v[j].second)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+            {
+                count++;
+            }
+        }
+        FOR(i,ya+1,yb)
+        {
+            int flag=0;
+            FOR(j,0,n)
+            {
+                dis=sqrt((v[j].first.first-xa)*(v[j].first.first-xa)+(v[j].first.second-i)*(v[j].first.second-i));
+                if(dis<=v[j].second)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+            {
+                count++;
+            }
+        }
+        FOR(i,ya+1,yb)
+        {
+            int flag=0;
+            FOR(j,0,n)
+            {
+                dis=sqrt((v[j].first.first-xb)*(v[j].first.first-xb)+(v[j].first.second-i)*(v[j].first.second-i));
+                if(dis<=v[j].second)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0)
+            {
+                count++;
+            }
+        }
+        cout<<count<<"\n";
+    
+}
