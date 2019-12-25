@@ -1,0 +1,64 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1282/problem/A
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+ 
+bool sortbysec(const pair<double,ll> &a,const pair<double,ll> &b)
+{
+    return true;
+}
+// fflush(stdout)
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    ll a,b,c,r,ans=0;
+    cin>>a>>b>>c>>r;
+    if(a>b)
+        swap(a,b);
+
+    if(a>=c+r||b<=c-r)
+        cout<<b-a<<"\n";
+    else 
+    {
+        if(a<c-r&&b>c-r&&b<=c+r)
+        {
+            cout<<c-r-a<<"\n";
+        }
+        else if(a>=c-r&&a<=c+r&&b>c+r)
+        {
+            cout<<b-c-r<<"\n";
+        }
+        else if(a<c-r&&b>c+r)
+        {
+            cout<<b-a-2*r<<"\n";
+        }
+        else 
+            cout<<0<<"\n";
+    }
+    }
+}
