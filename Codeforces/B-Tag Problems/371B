@@ -1,0 +1,88 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/371/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second<b.second;
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll a,b,two1=0,three1=0,five1=0,two2=0,three2=0,five2=0,flag=0;
+    cin>>a>>b;
+    ll x=__gcd(a,b);
+    a=a/x;
+    b=b/x;
+    while(a%2==0)
+    {
+        two1++;
+        a=a/2;
+    }
+    while(a%3==0)
+    {
+        three1++;
+        a=a/3;
+    }
+    while(a%5==0)
+    {
+        five1++;
+        a=a/5;
+    }
+    while(b%2==0)
+    {
+        two2++;
+        b=b/2;
+    }
+    while(b%3==0)
+    {
+        three2++;
+        b=b/3;
+    }
+    while(b%5==0)
+    {
+        five2++;
+        b=b/5;
+    }
+    if(a!=1||b!=1)
+        cout<<-1;
+    else 
+    {
+        cout<<abs(two1-two2)+abs(three1-three2)+abs(five1-five2);
+    }
+
+}
