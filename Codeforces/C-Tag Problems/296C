@@ -1,0 +1,97 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/296/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second>b.second;
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll n,m,k,i,j,x,y,d;
+    cin>>n>>m>>k;
+    ll a[n+1];
+    FORE(i,1,n)
+    {
+        cin>>a[i];
+    }
+    vector<pair<pll,ll>> val(m+5);
+    map<pll,ll> mp;
+    FORE(i,1,m)
+    {
+        cin>>x>>y>>d;
+        val[i]=make_pair(make_pair(x,y),d);
+        
+    }
+    vector<ll> v(m+5),ans(n+5);
+    FORE(i,0,m+3)
+        v[i]=0;
+    while(--k>=0)
+    {
+        cin>>x>>y;
+        v[x]++;
+        v[y+1]--;
+    }
+    FORE(i,1,m+1)
+    {
+        if(i==1)
+            v[i]=v[i];
+        else 
+            v[i]=v[i-1]+v[i];
+    }
+    FORE(i,1,n+3)
+        ans[i]=0;
+
+    FORE(i,1,m)
+    {
+        ans[val[i].first.first]+=v[i]*val[i].second;
+        ans[val[i].first.second+1]-=v[i]*val[i].second;
+    }
+    FORE(i,1,n)
+    {
+        if(i==1)
+            ans[i]=ans[i];
+        else 
+        {
+            ans[i]=ans[i-1]+ans[i];
+        }
+    }
+    FORE(i,1,n)
+        cout<<ans[i]+a[i]<<" ";
+    
+}
