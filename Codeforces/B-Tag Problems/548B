@@ -1,0 +1,105 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/548/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second>b.second;
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll n,m,i,j,q,x,y,c=0,maxi=-1;
+    cin>>n>>m>>q;
+    ll a[n+1][m+1];
+    vector<pll> v;
+    map<ll,ll> mp;
+    FORE(i,1,n)
+    {
+        FORE(j,1,m)
+        {
+            cin>>a[i][j];
+        }
+    }
+    FORE(i,1,n)
+    {
+        maxi=-1;
+        FORE(j,1,m)
+        {
+            c=0;
+            while(a[i][j]==1&&j<=m)
+            {
+                c++;
+                maxi=max(c,maxi);
+                j++;
+            }
+            maxi=max(c,maxi);
+        }
+        maxi=max(c,maxi);
+        v.pb(make_pair(i,maxi));
+    }
+    FOR(i,0,n)
+    {
+        mp[v[i].first]=v[i].second;
+    }
+    while(--q>=0)
+    {
+        cin>>x>>y;
+        maxi=-1;
+        a[x][y]=abs(a[x][y]-1);
+        FORE(i,1,m)
+        {
+            c=0;
+            while(a[x][i]==1&&i<=m)
+            {
+                c++;
+                maxi=max(maxi,c);
+                i++;
+            }
+            maxi=max(c,maxi);
+        }
+        maxi=max(maxi,c);
+        mp[x]=maxi;
+        ll ans=-1;
+        for(auto p:mp)
+        {
+            ans=max(ans,p.second);
+        }
+        cout<<ans<<"\n";
+    }
+
+}
