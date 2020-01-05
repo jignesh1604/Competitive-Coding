@@ -1,0 +1,52 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/560/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second>b.second;
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll a,b,c,d,e,f;
+    cin>>a>>b>>c>>d>>e>>f;
+    if((max(c,e)<=a&&(d+f<=b))||(max(d,f)<=a&&(c+e<=b))||(max(c,f)<=a&&(d+e<=b))||(max(d,e)<=a&&(c+f<=b))||(max(c,e)<=b&&(d+f<=a))||(max(d,f)<=b&&(c+e<=a))||(max(c,f)<=b&&(d+e<=a))||(max(d,e)<=b&&(c+f<=a)))
+        cout<<"YES\n";
+    else 
+        cout<<"NO\n";
+}
