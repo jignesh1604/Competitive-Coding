@@ -1,0 +1,80 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://www.codechef.com/JAN20B/problems/CHFDORA
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second>b.second;
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,m,i,j,k,l,c=0;
+        cin>>n>>m;
+        ll a[n+1][m+1];
+        FORE(i,1,n)
+        {
+            FORE(j,1,m)
+            {
+                cin>>a[i][j];
+            }
+        }
+    FORE(i,1,n)
+    {
+        FORE(j,1,m)
+        {
+            FOR(k,0,min(n,m))
+            {
+                if(i-k>=1&&i+k<=n&&j-k>=1&&j+k<=m)
+                {
+                    if(a[i-k][j]==a[i+k][j]&&a[i][j-k]==a[i][j+k])
+                    {
+                        c++;
+                    }
+                    else 
+                        break;
+                }
+            }
+        }
+    }
+    cout<<c<<"\n";
+    }
+}
