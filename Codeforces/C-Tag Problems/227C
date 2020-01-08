@@ -1,0 +1,53 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/227/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+ 
+bool sortbysec(const pair<double,ll> &a,const pair<double,ll> &b)
+{
+    return true;
+}
+ll modularExponentiation(ll x,ll n,ll m)
+{
+    ll result=1;
+    while(n>0)
+    {
+        if(n % 2 ==1)
+            result=(result * x)%m;
+        x=(x*x)%m;
+        n=n/2;
+    }
+    return result;
+}
+int main()
+{
+    FAST;
+    ll n,m;
+    cin>>n>>m;
+    ll ans=(modularExponentiation((ll)(3),n,(ll)(m))-1)%m;
+    if(ans==-1)
+        cout<<m-1<<"\n";
+    else 
+        cout<<ans<<"\n";
+}
