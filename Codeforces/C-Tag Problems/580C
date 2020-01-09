@@ -1,0 +1,94 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/580/problem/C
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    return a.second<b.second;
+}
+// fflush(stdout)
+
+vector<vector<ll>> adj;
+vector<bool> visited;
+ll cnt=0;
+void dfs(ll node,ll m,ll c,ll a[])
+{
+    visited[node]=true;
+    ll i;
+    if(c>m)
+        return;
+    if(adj[node].sz==1&&node!=1)
+    {
+        cnt++;
+    }
+    else {
+    FOR(i,0,adj[node].sz)
+    {
+        ll child=adj[node][i];
+        if(!visited[child])
+        {
+            if(a[child]==1)
+                dfs(child,m,c+1,a);
+            else 
+                dfs(child,m,0,a);
+        }
+    }
+    }
+}
+
+int main()
+{
+    FAST;
+    ll n,i,j,m,x,y;
+    cin>>n>>m;
+    ll a[n+1],deg[n+1]={};
+    FORE(i,1,n)
+        cin>>a[i];
+    adj=vector<vector<ll>>(n+1);
+    visited=vector<bool>(n+1);
+    FOR(i,1,n)
+    {
+        cin>>x>>y;
+        adj[x].pb(y);
+        adj[y].pb(x);
+    }
+    if(a[1]==1)
+        dfs(1,m,1,a);
+    else 
+        dfs(1,m,0,a);
+
+    cout<<cnt<<"\n";
+}
+    
