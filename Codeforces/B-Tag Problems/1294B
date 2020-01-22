@@ -1,0 +1,122 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1294/problem/B
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    if(a.first<b.first)
+        return true;
+    else if(a.first==b.first)
+    {
+        if(a.second<b.second)
+            return true;
+        else 
+            return false;
+    }
+    else 
+        return false;
+}
+
+bool sortbysec1(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    if(a.first<b.first)
+        return true;
+    else if(a.first==b.first)
+    {
+        if(a.second<b.second)
+            return true;
+        else 
+            return false;
+    }
+    else
+    {
+            return false;
+    }
+    
+}
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,i,j,x,y;
+        cin>>n;
+        vector<pll> v;
+        v.pb(make_pair((ll)0,(ll)0));
+        vector<ll> a,b;
+        FOR(i,0,n)
+        {
+            cin>>x>>y;
+            v.pb(make_pair(x,y));
+        }
+        sort(v.begin(),v.end(),sortbysec1);
+        FOR(i,0,v.sz)
+        {
+            a.pb(v[i].first);
+            b.pb(v[i].second);
+        }
+        sort(a.begin(),a.end());
+        sort(b.begin(),b.end());
+        int flag=0;
+        FOR(i,0,a.sz)
+        {
+            if(v[i].first!=a[i]||v[i].second!=b[i])
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==1)
+            cout<<"NO\n";
+        else 
+        {
+            cout<<"YES\n";
+            string s="";
+            FOR(i,0,v.sz-1)
+            {
+                FOR(j,0,v[i+1].first-v[i].first)
+                    s+='R';
+                FOR(j,0,v[i+1].second-v[i].second)
+                    s+='U';
+            }
+            cout<<s<<"\n";
+        }
+    }
+}
+    
