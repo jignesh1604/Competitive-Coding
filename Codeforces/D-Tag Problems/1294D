@@ -1,0 +1,75 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://codeforces.com/contest/1294/problem/D
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    if(a.first<b.first)
+        return true;
+    else if(a.first==b.first)
+    {
+        if(a.second<b.second)
+            return true;
+        else 
+            return false;
+    }
+    else 
+        return false;
+}
+
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    ll n,x,i,j;
+    cin>>n>>x;
+    vector<ll> v(n);
+    set<pair<ll,ll>> st;
+    FOR(i,0,x)
+    {
+        st.insert(make_pair(v[i],i));
+    }
+    FOR(i,0,n)
+    {
+        cin>>j;
+        j%=x;
+        st.erase(make_pair(v[j],j));
+        v[j]++;
+        st.insert(make_pair(v[j],j));
+        cout<<st.begin()->first*x+st.begin()->second<<"\n";
+    }
+}
+    
