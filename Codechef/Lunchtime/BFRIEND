@@ -1,0 +1,87 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://www.codechef.com/LTIME80B/problems/BFRIEND
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    if(a.first<b.first)
+        return true;
+    else if(a.first==b.first)
+    {
+        if(a.second<b.second)
+            return true;
+        else 
+            return false;
+    }
+    else 
+        return false;
+}
+
+// fflush(stdout)
+
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,i,j,a,b,c,flag=0,ans=LLONG_MAX;
+        cin>>n>>a>>b>>c;
+        if(b>a)
+            swap(a,b);
+        vector<ll> v(n+1);
+        FOR(i,0,n)
+        {
+            cin>>v[i];
+            if(v[i]>=b&&v[i]<=a)
+            {
+                flag=1;
+
+            }
+            else 
+            {
+                ans=min(ans,abs(a-v[i])+abs(v[i]-b)+c);
+            }
+        }
+        if(flag==1)
+        {
+            cout<<abs(a-b)+c<<"\n";
+        }
+        else 
+            cout<<ans<<"\n";
+    }
+}
+    
