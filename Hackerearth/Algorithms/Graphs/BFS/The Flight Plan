@@ -1,0 +1,113 @@
+/*
+ * Author   :   jignesh1604
+ * College  :   SVNIT
+ * Link     :   https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/traffic-light-2-ee27ba45/
+ */
+ 
+ 
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
+ 
+#define pb push_back
+#define sz size()
+#define ff first
+#define ss second
+#define ll long long int
+#define ld long double
+#define bp __builtin_popcountll
+#define FOR(i,a,b) for(i=a;i<b;i++)
+#define ROR(i,a,b) for(i=a;i>b;i--)
+#define FORE(i,a,b) for(i=a;i<=b;i++)
+#define RORE(i,a,b) for(i=a;i>=b;i--)
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+const ll M=1e9+7;
+
+bool isprime(ll n)
+{
+    for(ll i=2;i<=sqrt(n);i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+
+bool sortbysec(const pair<ll,ll> &a,const pair<ll,ll> &b)
+{
+    if(a.first<b.first)
+        return true;
+    else if(a.first==b.first)
+    {
+        if(a.second<b.second)
+            return true;
+        else 
+            return false;
+    }
+    else 
+        return false;
+}
+
+// fflush(stdout)
+
+vector<vector<ll>> adj;
+vector<bool> visited;
+vector<ll> pre;
+
+void bfs(ll node)
+{
+    queue<ll> q;
+    q.push(node);
+    visited[node]=true;
+    ll i;
+    while(!q.empty())
+    {
+        ll child=q.front();
+        q.pop();
+        FOR(i,0,adj[child].sz)
+        {
+            if(!visited[adj[child][i]])
+            {
+                q.push(adj[child][i]);
+                visited[adj[child][i]]=true;
+                pre[adj[child][i]]=child;
+            }
+        }
+    }
+}
+
+int main()
+{
+    FAST;
+    ll n,m,t,c,i,j,x,y;
+    cin>>n>>m>>t>>c;
+    adj=vector<vector<ll>> (n+1);
+    visited=vector<bool> (n+1);
+    pre=vector<ll> (n+1);
+    FOR(i,0,m)
+    {
+        cin>>x>>y;
+        adj[x].pb(y);
+        adj[y].pb(x);
+    }
+    FOR(i,1,n+1)
+    {
+        sort(adj[i].begin(),adj[i].end());
+    }
+    cin>>x>>y;
+    bfs(x);
+    ll cur=y;
+    vector<ll> v;
+    while(pre[cur]!=0)
+    {
+        v.pb(cur);
+        cur=pre[cur];
+    }
+    v.pb(x);
+    reverse(v.begin(),v.end());
+    cout<<v.sz<<"\n";
+    FOR(i,0,v.sz)
+        cout<<v[i]<<" ";
+}
+    
