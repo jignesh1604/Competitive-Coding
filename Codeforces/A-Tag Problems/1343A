@@ -1,0 +1,24 @@
+?/ Link : https://codeforces.com/contest/1343/problem/A
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    vector<long long int> v;
+    long long int i , ans = 2;
+    for(i = 0 ; i < 32 ; i++) {
+        ans = ans*2;
+        v.push_back(ans-1);
+    }
+    long long int t;
+    cin >> t;
+    while(t--) {
+        long long int n;
+        cin >> n;
+        for(i = 0 ; i < v.size() ; i++) {
+            if(n%v[i] == 0) {
+                cout << n/v[i] << "\n";
+                break;
+            }
+        }
+    }
+}
