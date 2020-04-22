@@ -1,0 +1,46 @@
+// Link : https://codeforces.com/contest/1343/problem/C
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    long long int t;
+    cin >> t;
+    while(t-- > 0) {
+        long long int n , i , j , ans = 0 , x, maxi = -LLONG_MAX;
+        char c;
+        cin >> n ;
+        for(i = 0 ; i < n ; i++) {
+            cin >> x;
+            if(i == 0) {
+                if(x < 0) {
+                    c = 'N';
+                    maxi = x;
+                }
+                else {
+                    c = 'P';
+                    maxi = x;
+                }
+            }
+            else {
+                if(x < 0 && c == 'N') {
+                    maxi = max(maxi , x);
+                }
+                else if(x < 0 && c == 'P') {
+                    ans += maxi;
+                    maxi = x;
+                    c = 'N';
+                }
+                else if(x > 0 && c == 'P') {
+                    maxi = max(maxi , x);
+                }
+                else {
+                    ans += maxi;
+                    maxi = x;
+                    c = 'P';
+                }
+            }
+        }
+        ans += maxi;
+        cout << ans << "\n";
+    }
+}
