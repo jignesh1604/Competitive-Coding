@@ -1,0 +1,27 @@
+// Link : https://codeforces.com/contest/1343/problem/B
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    long long int t;
+    cin >> t;
+    while(t-- > 0) {
+        long long int n , i , even = 0 , odd = 0;
+        cin >> n;
+        if((n/2)%2 != 0) {
+            cout << "NO\n";
+        }
+        else {
+            cout << "YES\n";
+            for(i = 1 ; i <= n/2 ; i++) {
+                cout << i*2 << " ";
+                even += i*2;
+            }
+            for(i = 1 ; i <= n/2 - 1 ; i++) {
+                cout << i*2 - 1 << " ";
+                odd += i*2-1;
+            }
+            cout << even - odd << "\n";
+        }
+    }
+}
