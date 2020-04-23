@@ -1,0 +1,39 @@
+// Link : https://codeforces.com/contest/1343/problem/D
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int t;
+    cin >> t;
+    while(t-- > 0) {
+        long long int n , i , k;
+        cin >> n >> k;
+        long long int a[n+5];
+        for(i = 1 ; i <= n ; i++) {
+            cin >> a[i];
+        }
+        long long int cnt[2*k+5];
+        for(i = 1 ; i <= 2*k + 3 ; i++) {
+            cnt[i] = 0;
+        }
+        for(i = 1 ; i <= n/2 ; i++) {
+            cnt[a[i] + a[n-i+1]]++;
+        }
+        long long int pre[2*k+5];
+        for(i = 1 ; i <= 2*k+3 ; i++) {
+            pre[i] = 0;
+        }
+        for(i = 1 ; i <= n/2 ; i++) {
+            pre[min(a[i] , a[n-i+1]) + 1] += 1;
+            pre[max(a[i] , a[n-i+1]) + k + 1] -= 1;
+        }
+        for(i = 2 ; i <= 2*k+3 ; i++) {
+            pre[i] = pre[i-1] + pre[i];
+        }
+        long long int ans = LLONG_MAX;
+        for(i = 2 ; i <= 2*k ; i++) {
+            ans = min(ans , (pre[i] - cnt[i]) + (n/2 - pre[i])*2);
+        }
+        cout << ans << "\n";
+    }
+}
