@@ -1,0 +1,22 @@
+// Link : https://codeforces.com/contest/1341/problem/A
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    long long int t;
+    cin >> t;
+    while(t-- > 0) {
+        long long int n , a , b , c , d ,x1 , x2 , y1 , y2;
+        cin >> n >> a >> b >> c >> d;
+        x1 = a-b;
+        x2 = a+b;
+        y1 = c-d;
+        y2 = c+d;
+        if(n*x1 <= y2 && n*x2 >= y1) {
+            cout << "Yes\n";
+        }
+        else {
+            cout << "No\n";
+        }
+    }
+}
