@@ -1,0 +1,23 @@
+* Link  : https://codeforces.com/contest/72/problem/G
+
+A := File standardInput readLine asNumber;
+if(A == 1 , "1" println; return;);
+if(A == 2 , "2" println; return;);
+if(A == 3 , "3" println; return;);
+if(A == 4 , "5" println; return;);
+if(A == 5 , "8" println; return;);
+if(A == 6 , "13" println; return;);
+if(A == 7 , "21" println; return;);
+if(A == 8 , "34" println; return;);
+if(A == 9 , "55" println; return;);
+if(A == 10 , "89" println; return;);
+if(A == 11 , "144" println; return;);
+if(A == 12 , "233" println; return;);
+if(A == 13 , "377" println; return;);
+if(A == 14 , "610" println; return;);
+if(A == 15 , "987" println; return;);
+if(A == 16 , "1597" println; return;);
+if(A == 17, "2584" println; return;);
+if(A == 18 , "4181" println; return;);
+if(A == 19 , "6765" println; return;);
+if(A == 20 , "10946" println; return;);
