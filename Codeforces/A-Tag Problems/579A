@@ -1,0 +1,22 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/579/problem/A
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int x , i , ans = 0;
+    cin >> x;
+    cout << __builtin_popcountll(x) << "\n";
+}
+
+int main() {
+    long long int tc = 1;
+    // cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
