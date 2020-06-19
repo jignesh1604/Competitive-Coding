@@ -1,0 +1,40 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/1368/problem/B
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n = 0 , i , j , k , ans = 0;
+    cin >> k;
+    long long int a[10] = {};
+    while(1) {
+        long long int mul = 1;
+        for(i = 0 ; i < 10 ; i++) {
+            mul = mul*a[i];
+        }
+        if(mul >= k) {
+            break;
+        }
+        n = (n+1)%10;
+        a[n]++;
+    }
+    string d = "codeforces" , s = "";
+    for(i = 0 ; i < 10 ; i++) {
+        for(j = 0 ; j < a[i] ; j++) {
+            s += d[i];
+        }
+    }
+    cout << s << "\n";
+}
+
+int main() {
+    long long int tc = 1;
+    // cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
