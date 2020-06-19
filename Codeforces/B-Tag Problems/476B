@@ -1,0 +1,56 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/476/problem/B
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string s1 , s2;
+    cin >> s1 >> s2;
+    long long int pluss1 = 0 , minuss1 = 0 , pluss2 = 0 , minuss2 = 0 , und = 0 , i , j;
+    for(i = 0 ; i < s1.size() ; i++) {
+        if(s1[i] == '+') {
+            pluss1++;
+        }
+        else {
+            minuss1++;
+        }
+    }
+    for(i = 0 ; i < s2.size() ; i++) {
+        if(s2[i] == '+') {
+            pluss2++;
+        }
+        else if(s2[i] == '-') {
+            minuss2++;
+        }
+        else {
+            und++;
+        }
+    }
+    if(pluss2 + und < pluss1 || minuss2 + und < minuss1) {
+        cout << 0 << "\n";
+    }
+    else {
+        // if(und == 0) {
+        //     cout << 1 << "\n";
+        //     return;
+        // }
+
+        long double ans = 1;
+        for(i = 0 ; i < pluss1 - pluss2 ; i++) {
+            ans = ans*(long double)((long double)(und - i)/(long double)(pluss1 - pluss2 - i));
+        }
+        cout << setprecision(10) << (long double)((long double)ans / (long double)(1ll << und)) << "\n";
+    }
+}
+
+int main() {
+    long long int tc = 1;
+    // cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
