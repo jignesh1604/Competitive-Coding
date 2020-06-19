@@ -1,0 +1,31 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/467/problem/B
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n , m , k , i , ans = 0;
+    cin >> n >> m >> k;
+    long long int a[m+5];
+    for(i = 0 ; i <= m ; i++) {
+        cin >> a[i];
+    }
+    for(i = 0 ; i < m ; i++) {
+        long long int x = (a[i]^a[m]);
+        if(__builtin_popcountll(x) <= k) 
+            ans++;
+    }
+    cout << ans << "\n";
+}
+
+int main() {
+    long long int tc = 1;
+    // cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
