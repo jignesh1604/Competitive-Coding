@@ -1,0 +1,28 @@
+/*
+* Author : jignesh1604
+* Link   : https://codeforces.com/contest/1374/problem/D
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    long long int t;
+    cin >> t;
+    while(t-- > 0 ) {
+        long long int n , k , i , j;
+        cin >> n >> k;
+        long long int a[n+1];
+        for(i = 0 ; i < n ; i++) {
+            cin >> a[i];
+        }
+        map<long long int , long long int> mp;
+        for(i = 0 ; i < n ; i++) {
+            if((k-(a[i]%k))%k != 0)
+                mp[(k-(a[i]%k))%k]++;
+        }
+        long long int ans = 0;
+        for(auto x : mp) {
+            ans = max(ans , (x.second-1)*(k) + x.first + 1);
+        }
+        cout << ans << "\n";
+    }
+}
