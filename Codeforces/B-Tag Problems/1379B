@@ -1,0 +1,37 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/1379/problem/B
+    -------------------------------"Push yourself, because no one else is going to do it for you"-----------------------------
+    1 contest + 2 upsolve + 1 new topic + 5 problems = 1900+ of cf in 3 months
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int l , r , m , i , flag = 0 , a , b , c;
+    cin >> l >> r >> m;
+    for(a = l ; a <= r ; a++) {
+        long long int mod = m%a;
+        if(m-mod > 0 && r-l >= mod) {
+            c = l;
+            b = l+mod;
+            break;
+        }
+        else if(r - l >= a-mod) {
+            b = l;
+            c = l+a-mod;
+            break;
+        }
+    }
+    cout << a << " " << b << " " << c << "\n";
+}
+
+int main() {
+    long long int tc = 1;
+    cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
