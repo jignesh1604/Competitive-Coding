@@ -1,0 +1,109 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    Link    :   https://codeforces.com/contest/1379/problem/A
+    -------------------------------"Push yourself, because no one else is going to do it for you"-----------------------------
+    1 contest + 2 upsolve + 1 new topic + 5 problems = 1900+ of cf in 3 months
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n , i , j;
+    cin >> n;
+    string s , ans = "abacaba";
+    cin >> s;
+    // if(s.size() < 7) {
+    //     cout << "NO\n";
+    //     return;
+    // }
+        long long int c = 0 , flag;
+        for(i = 0 ; i < n-6 ; i++) {
+            flag = 0;
+            for(j = 0 ; j < 7 ; j++) {
+                if(s[i+j] != ans[j]) {
+                    flag = 1;
+                } 
+            }
+            if(flag == 0) {
+                c++;
+            }
+        }
+        // cout << c << " c\n";
+        if(c == 1) {
+            cout << "YES\n";
+            for(i = 0 ; i < n ; i++) {
+                if(s[i] == '?') s[i] = 'z';
+            }
+            cout << s << "\n";
+        }
+        else if(c > 1) {
+            cout << "NO\n";
+        }
+        else {
+        int f = 0;
+        for(i = 0 ; i < n-6 ; i++) {
+            flag = 0;
+            string t = s;
+            for(j = 0 ; j < 7 ; j++) {
+                if(s[i+j] == ans[j] || s[i+j] == '?') {
+                    t[i+j] = ans[j];
+                }
+                else {
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag == 0) {
+                for(j = 0 ; j < n ; j++) {
+                    if(t[j] == '?') {
+                        t[j] = 'z';
+                    }
+                }
+                c = 0;
+                for(long long int k = 0 ; k < n-6 ; k++) {
+            flag = 0;
+            for(j = 0 ; j < 7 ; j++) {
+                if(t[k+j] != ans[j]) {
+                    flag = 1;
+                } 
+            }
+            if(flag == 0) {
+                c++;
+            }
+        }
+        // cout << c << " c\n";
+        if(c > 1) {
+            
+        }
+        else {
+                s = t;
+                for(j = 0 ; j < n ; j++) {
+                    if(s[j] == '?') {
+                        s[j] = 'z';
+                    }
+                }
+                f = 1;
+                break;
+            }
+            }
+        }
+        if(f == 0) {
+            cout << "NO\n";
+        }
+        else {
+            cout << "YES\n";
+            cout << s << "\n";
+        }
+        }
+    
+}
+
+int main() {
+    long long int tc = 1;
+    cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
