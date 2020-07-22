@@ -1,0 +1,40 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    -------------------------------"Make each day your masterpiece"-----------------------------
+    1 contest + 2 upsolve + 1 new topic + 5 problems = 1900+ of cf in 3 months
+    Link  : https://codeforces.com/contest/1382/problem/A
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n , m , i , j;
+    cin >> n >> m;
+    map<long long int , long long int> mp1 , mp2;
+    for(i = 0 ; i < n ; i++) {
+        cin >> j;
+        mp1[j]++;
+    }
+    for(i = 0 ; i < m ; i++) {
+        cin >> j;
+        mp2[j]++;
+    }
+    for(auto x : mp1) {
+        if(mp2[x.first] > 0) {
+            cout << "YES\n";
+            cout << 1 << " " << x.first << "\n";
+            return;
+        }
+    }
+    cout << "NO\n";
+}
+
+int main() {
+    long long int tc = 1;
+    cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
