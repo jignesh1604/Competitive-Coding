@@ -1,0 +1,39 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    -------------------------------"Make each day your masterpiece"-----------------------------
+    1 contest + 2 upsolve + 1 new topic + 5 problems = 1900+ of cf in 3 months
+    Link  : https://codeforces.com/contest/1382/problem/C1
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n , i;
+    cin >> n;
+    string s , t;
+    cin >> s >> t;
+    vector<long long int> v;
+    for(i = 0 ; i < n ; i++) {
+        if(s[i] != t[i]) 
+        {
+            if(i+1 != 1)
+                v.push_back(i+1);
+            v.push_back(1);
+            if(i+1 != 1)
+                v.push_back(i+1);
+        }
+    }
+    cout << v.size() << " " ;
+    for(i = 0 ; i < v.size() ; i++) cout << v[i] << " ";
+    cout << "\n";
+}
+
+int main() {
+    long long int tc = 1;
+    cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
