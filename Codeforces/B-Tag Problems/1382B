@@ -1,0 +1,33 @@
+/*
+    Author  :   jignesh1604
+    College :   SVNIT
+    -------------------------------"Make each day your masterpiece"-----------------------------
+    1 contest + 2 upsolve + 1 new topic + 5 problems = 1900+ of cf in 3 months
+    Link  : https://codeforces.com/contest/1382/problem/B
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long int n , i , c = 0;
+    cin >> n;
+    long long int a[n+1];
+    for(i = 0 ; i < n ; i++) {
+        cin >> a[i];
+    }
+    for(i = 0 ; i < n-1 ; i++) {
+        if(a[i] == 1) c++;
+        else break;
+    }
+    if(c%2 == 0) cout << "First\n";
+    else cout << "Second\n";
+}
+
+int main() {
+    long long int tc = 1;
+    cin >> tc;
+    while(tc-- > 0) {
+        solve();
+    }
+}
