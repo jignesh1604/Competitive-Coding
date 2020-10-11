@@ -1,0 +1,52 @@
+/*
+Problem Link:- http://codeforces.com/contest/1426/problem/A
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define fast_io ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define forp(i,a,b) for (int i = (a); i <(b); i++)
+#define forn(i,a,b) for (int i = (a); i >(b); i--)
+#define mod 1000000007
+#define multiple_testcases_t int t;cin>>t;while(t--){solve();}
+#define single_testcase_t solve();
+typedef long long int ll;
+typedef vector<int> vi;
+typedef pair<int,int> pii;
+
+
+// <----- Actual solve() function to print output -----> //
+void solve()
+{
+  int n,k,c=0,mn;
+  cin>>n>>k;
+if(n<=2)
+cout<<1;
+else
+{
+  n-=2;
+  c=n/k;
+  if(n%k!=0)
+  c++;
+c++;
+  cout<<c;
+}
+
+   cout<<"\n";      //if t>1 uncomment this
+}
+ 
+// MAIN function --------------------------------------------------------------------------//
+int main()
+{
+    fast_io
+  //freopen("input.txt", "r", stdin);
+  //freopen("output.txt", "w", stdout);
+ 
+ // single_testcase_t
+ multiple_testcases_t
+return 0;
+}
